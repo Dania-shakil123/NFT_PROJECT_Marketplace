@@ -9,17 +9,19 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTToken is ERC721, ERC721URIStorage, Pausable, Ownable {
     string BaseURI;
-    uint256 private  whiteListedUserLimit;
-    uint256 private publicMintLimit;
+   uint256 private  whiteListedUserLimit;
+    uint256 public publicMintLimit;
     uint256 private adminLimit;
-    uint256 private countForWhiteListers;
-    uint256 private countForPublic;
-    uint256 private countAdmin;
-    uint256 private MAXMintPerPerson;
-    bool private isPublicSaleActive;
+    uint256 public countForWhiteListers;
+    uint256 public countForPublic;
+    uint256 public countAdmin;
+    uint256 public MAXMintPerPerson;
+    bool public isPublicSaleActive;
     uint256 private startTime;
     uint256 private endTime;
     uint256 private  difference;
+    
+
 
     event PublicSale(uint256 indexed nftID, address indexed seller, uint transactionTime);
     event WhitelisterSale(uint256 indexed nftID, address indexed seller, uint indexed transactionTime, uint timeLeft);
