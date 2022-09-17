@@ -1,3 +1,4 @@
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
@@ -9,6 +10,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTToken is ERC721, ERC721URIStorage, Pausable, Ownable {
     string BaseURI;
+     uint256 private  TotalMintLimit;
    uint256 private  whiteListedUserLimit;
     uint256 public publicMintLimit;
     uint256 private adminLimit;
@@ -48,8 +50,9 @@ contract NFTToken is ERC721, ERC721URIStorage, Pausable, Ownable {
     mapping(address => bool) private admins;
 
 
-    constructor(uint WhiteListLimit, uint PublicMintLimit, uint AdminlMintLimit, uint perPersonLimit) ERC721("Alpha Girls Clubs", "AL") {
+    constructor(uint _totallimit ,uint WhiteListLimit, uint PublicMintLimit, uint AdminlMintLimit, uint perPersonLimit) ERC721("Alpha Girls Clubs", "AL") {
         BaseURI= " https://gateway.pinata.cloud/ipfs/";
+        TotalMintLimit=_totallimit;
         whiteListedUserLimit = WhiteListLimit;
         publicMintLimit = PublicMintLimit;
         adminLimit = AdminlMintLimit;
